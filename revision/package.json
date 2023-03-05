@@ -14,10 +14,97 @@
   "contributes": {
     "commands": [
       {
-        "command": "revision.helloWorld",
-        "title": "Hello World"
+        "command": "revision.reviseInsert",
+        "title": "Revise & Insert"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "revision.reviseInsert",
+        "key": "shift+alt+r",
+        "mac": "shift+alt+r",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "ReVision",
+      "properties": {
+        "revision.api": {
+          "type": "string",
+          "default": "azure-openai",
+          "enum": [
+            "azure-openai",
+            "openai"
+          ],
+          "enumDescriptions": [
+            "Azure OpenAI API.",
+            "OpenAI."
+          ],
+          "description": "Specify the api to revise the text."
+        },
+        "revision.azureOpenAIApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "The API key for Azure OpenAI."
+        },
+        "revision.openAIApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "The API key for OpenAI."
+        },
+        "revision.writingStyle": {
+          "type": "string",
+          "default": "professional",
+          "enum": [
+            "professional",
+            "formal",
+            "casual",
+            "humorous",
+            "informative",
+            "persuasive",
+            "creative",
+            "narrative",
+            "poetic",
+            "conversational",
+            "sincere",
+            "exaggeration",
+            "sarcastic",
+            "furious"
+          ],
+          "enumDescriptions": [
+            "A professional tone that is appropriate for business documents, such as proposals, reports, and presentations.",
+            "A formal tone that is appropriate for documents that require a high level of formality, such as legal documents, academic papers, and business correspondence.",
+            "A casual tone that is appropriate for documents that are meant to be read by friends, family, or colleagues.",
+            "A humorous tone that is fun and playful.",
+            "An informative tone that focuses on presenting factual information in a clear and concise manner.",
+            "A persuasive tone aims to convince the reader of a particular point of view or argument.",
+            "A creative tone that is imaginative and original.",
+            "A narrative tone that is appropriate for stories, novels, and other fictional works.",
+            "A poetic tone that is appropriate for poems, song lyrics, and other works of art.",
+            "A conversational tone that is appropriate for informal conversations.",
+            "A sincere tone that is appropriate for expressing genuine feelings.",
+            "An exaggeration tone that is appropriate for expressing strong feelings.",
+            "A sarcastic tone that is to use sarcasm to upset someone or to show anger.",
+            "A furious tone that is to express extreme anger."
+          ]
+        },
+        "revision.sourceLanguage": {
+          "type": "string",
+          "default": "en",
+          "description": "The source language to be revised."
+        },
+        "revision.targetLanguage": {
+          "type": "string",
+          "default": "zh-CN",
+          "description": "The target language to be revised or translated."
+        },
+        "revision.enableSelectionHoverRevision": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the hover translation when the selection is not empty."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
