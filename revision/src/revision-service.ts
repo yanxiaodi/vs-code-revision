@@ -9,7 +9,7 @@ export class AzureOpenAIRevisionService implements IRevisionService {
     writingStyle: string
   ): Promise<string> {
     try {
-      let result = "";
+      let result = "This is a test.";
       return result;
     } catch (error: any) {
       throw error;
@@ -24,7 +24,7 @@ export class ChatGptRevisionService implements IRevisionService {
       writingStyle: string
     ): Promise<string> {
       try {
-        let result = "";
+        let result = "This is a test.";
         return result;
       } catch (error: any) {
         throw error;
