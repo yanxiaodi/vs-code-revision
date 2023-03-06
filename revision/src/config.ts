@@ -5,7 +5,7 @@ export const getConfiguration = <T>(key: string) => {
 };
 
 export const getApiConfiguration = () => {
-  return getConfiguration<string>("api") ?? "azure-openai";
+  return getConfiguration<string>("api") ?? "openai";
 };
 
 export const getAzureOpenAIApiKeyConfiguration = () => {

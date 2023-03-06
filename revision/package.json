@@ -38,7 +38,7 @@
           ],
           "enumDescriptions": [
             "Azure OpenAI API.",
-            "OpenAI."
+            "OpenAI API."
           ],
           "description": "Specify the api to revise the text."
         },
@@ -60,32 +60,26 @@
             "formal",
             "casual",
             "humorous",
-            "informative",
-            "persuasive",
-            "creative",
-            "narrative",
-            "poetic",
-            "conversational",
-            "sincere",
-            "exaggeration",
             "sarcastic",
-            "furious"
+            "persuasive",
+            "informative",
+            "empathetic",
+            "authoritative",
+            "poetic",
+            "exaggeration"
           ],
           "enumDescriptions": [
             "A professional tone that is appropriate for business documents, such as proposals, reports, and presentations.",
             "A formal tone that is appropriate for documents that require a high level of formality, such as legal documents, academic papers, and business correspondence.",
             "A casual tone that is appropriate for documents that are meant to be read by friends, family, or colleagues.",
             "A humorous tone that is fun and playful.",
-            "An informative tone that focuses on presenting factual information in a clear and concise manner.",
+            "A sarcastic tone that is characterized by its use of irony and sarcasm, often used to express displeasure or frustration.",
             "A persuasive tone aims to convince the reader of a particular point of view or argument.",
-            "A creative tone that is imaginative and original.",
-            "A narrative tone that is appropriate for stories, novels, and other fictional works.",
+            "An informative tone that focuses on presenting factual information in a clear and concise manner.",
+            "An empathetic tone that is used to express understanding and compassion towards the reader, often used in customer service or support contexts.",
+            "An authoritative tone that is used to convey expertise and authority on a particular subject, often used in instructional or educational contexts.",
             "A poetic tone that is appropriate for poems, song lyrics, and other works of art.",
-            "A conversational tone that is appropriate for informal conversations.",
-            "A sincere tone that is appropriate for expressing genuine feelings.",
-            "An exaggeration tone that is appropriate for expressing strong feelings.",
-            "A sarcastic tone that is to use sarcasm to upset someone or to show anger.",
-            "A furious tone that is to express extreme anger."
+            "An exaggeration tone that is appropriate for expressing strong feelings."
           ]
         },
         "revision.sourceLanguage": {

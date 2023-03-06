@@ -17,7 +17,7 @@ export class AzureOpenAIRevisionService implements IRevisionService {
   }
 }
 
-export class ChatGptRevisionService implements IRevisionService {
+export class OpenAIRevisionService implements IRevisionService {
     async revise(
       text: string,
       language: string,
@@ -38,10 +38,10 @@ export class RevisionServiceFactory {
       switch (api.toLowerCase()) {
         case 'azure-openai':
           return new AzureOpenAIRevisionService();
-        case 'chatgpt':
-          return new ChatGptRevisionService();
+        case 'openai':
+          return new OpenAIRevisionService();
         default:
-          return new AzureOpenAIRevisionService();
+          return new OpenAIRevisionService();
       }
     }
   }
