@@ -1,15 +1,25 @@
 {
   "name": "revision",
   "displayName": "ReVision",
-  "description": "A tool to revise your article or blogs.",
+  "description": "A tool to revise your writing and translate your text.",
   "version": "0.0.1",
+  "publisher": "XiaodiYan",
+  "repository": "https://github.com/yanxiaodi/vs-code-revision",
   "engines": {
     "vscode": "^1.76.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "keywords": [
+    "translate",
+    "revise",
+    "rewrite",
+    "openai",
+    "grammarly",
+    "revision"
+],
+  "activationEvents": ["*"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
