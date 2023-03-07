@@ -31,6 +31,7 @@ steps:
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
 
 - bash: |
+    cd revision
     echo ">>> Compile vscode-test"
     yarn && yarn compile
     echo ">>> Run integration test"
@@ -40,6 +41,7 @@ steps:
     DISPLAY: ':99.0'
 
 - bash: |
+    cd revision
     echo ">>> Publish"
     yarn deploy
   displayName: Publish
