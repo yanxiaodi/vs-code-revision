@@ -38,7 +38,10 @@ export const regiserCommands = (
 export const reviseInsertCommand = async (service: IRevisionService) => {
   // The code you place here will be executed every time your command is executed
   setCurrentEditor();
-  const text = getParagraph();
+  let text = getSelectionText();
+  if (text === "") {
+    text = getParagraph();
+  }
   try {
     if (text.trim() !== "") {
       const language = getSourceLanguageConfiguration();
