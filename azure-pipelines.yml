@@ -1,6 +1,6 @@
 trigger:
   branches:
-    include: ['master']
+    include: ['main']
   tags:
     include:
     - v*
