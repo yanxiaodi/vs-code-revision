@@ -1,16 +1,90 @@
-# revision README
+# ReVision README
 
-This is the README for your extension "revision". After writing up a brief description, we recommend including the following sections.
+**ReVision** is a VSCode extension that allows you to quickly and easily revise your written work. It uses [OpenAI](https://openai.com/) to generate new text based on your existing text. It can use different writing styles to improve your writing, and can also be used to translate your text into a different language.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+ReVision depends on the [OpenAI API](https://openai.com/blog/openai-api/). You can sign up for a free account [here](https://beta.openai.com/). Once you have an account, you can generate an API key [here](https://beta.openai.com/account/api-keys). You can then paste your API key into the extension settings.
 
-For example if there is an image subfolder under your extension project workspace:
+### Revising
 
-\!\[feature X\]\(images/feature-x.png\)
+ReVision supports multiple writing styles. You can choose from the following styles:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+* professional
+* formal
+* casual
+* humorous
+* sarcastic
+* informative
+* empathetic
+* authoritative
+* poetic
+
+You can also define your own style by choosing the `other` option in the settings, then specifying your own style in the `otherWritingStyle` setting, for example, narrative.
+
+Click any text in your document or select a sentence/paragraph, then press `Shift+Alt+R` to revise the text. If you haven't selected any text, ReVision will automatically select the current paragraph.
+
+The revised text will be automatically inserted into your document.
+
+Note that the generated text depends on your original text, so the styles may not accurately reflect the style you have selected. For example, you cannot use ReVision to generate a humorous text from a professional text.
+
+### Translating
+
+ReVision can also translate your text into a different language. You need to set the `targetLanguage` setting to the language you want to translate to. You can choose from the following languages:
+
+* English
+* Chinese (Simplified)
+* Chinese (Traditional)
+* Spanish
+* French
+* German
+* Italian
+* Portuguese
+* Dutch
+* Russian
+* Arabic
+* Japanese
+* Korean
+* Indonesian
+* Thai
+* Turkish
+* Vietnamese
+* Polish
+* Swedish
+* Norwegian
+* Danish
+* Finnish
+* Greek
+* Czech
+* Slovak
+* Romanian
+* Hungarian
+* Bulgarian
+* Hebrew
+* Hindi
+* Bengali
+* Urdu
+* Punjabi
+* Tamil
+* Telugu
+* Marathi
+* Gujarati
+* Kannada
+* Malayalam
+* Oriya
+* Assamese
+* Persian
+* Swahili
+* Yoruba
+* Igbo
+* Zulu
+* Xhosa
+
+Click any text in your document or select a sentence/paragraph, then press `Shift+T` to translate the text. If you haven't selected any text, ReVision will automatically select the current paragraph.
+
+The translated text will be automatically inserted into your document.
+
+Note that OpenAI supports more languages but we have not yet added them to the extension. Maybe you can help us add them?
 
 ## Requirements
 
@@ -18,54 +92,29 @@ If you have any requirements or dependencies, add a section describing those and
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
+You can change the writing style, source language and target language in the extension settings.
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* `revision.api`: Choose the API you want to use. Currently, only OpenAI is supported. We will support Azure OpenAI in the future.
+* `revision.openAIApiKey`: Your OpenAI API key. You can get one [here](https://beta.openai.com/account/api-keys).
+* `revision.writingStyle`: The writing style you want to use.
+* `revision.otherWritingStyle`: If you choose `other` as the writing style, you can specify your own style here.
+* `revision.sourceLanguage`: The source language of your text.
+* `revision.targetLanguage`: The target language of your text.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+The keybinding might not work properly on some Linux machines, or conflict with other extensions. Please open issues to describe your environment. Thanks.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+Initial release of the extension.
 
 ## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+* [Translator Helper](https://github.com/yanxiaodi/vscode-translator-helper): A VSCode extension that helps you translate your text into different languages.
 
 **Enjoy!**
