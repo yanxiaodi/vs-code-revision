@@ -1,6 +1,7 @@
 trigger:
   branches:
-    include: ['main']
+    include:
+    - main
   tags:
     include:
     - v*
@@ -9,6 +10,8 @@ strategy:
   matrix:
     linux:
       imageName: 'ubuntu-latest'
+    mac:
+      imageName: 'macos-latest'
     windows:
       imageName: 'windows-latest'
 
@@ -19,9 +22,7 @@ steps:
 
 - task: NodeTool@0
   inputs:
-    versionSource: 'spec'
-    versionSpec: '16.17.1'
-    checkLatest: true
+    versionSpec: '10.x'
   displayName: 'Install Node.js'
 
 - bash: |
@@ -31,18 +32,12 @@ steps:
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
 
 - bash: |
-    cd revision
     echo ">>> Compile vscode-test"
     yarn && yarn compile
-  displayName: Compile
+    echo ">>> Compiled vscode-test"
+    cd sample
+    echo ">>> Run sample integration test"
+    yarn && yarn compile && yarn test
+  displayName: Run Tests
   env:
     DISPLAY: ':99.0'
-
-- bash: |
-    cd revision
-    echo ">>> Publish"
-    yarn deploy
-  displayName: Publish
-  condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
-  env:
-    VSCE_PAT: $(VSCE_PAT)
