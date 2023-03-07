@@ -32,9 +32,7 @@ export const regiserCommands = (
   //   CommandIds.copyRevisionTextCommand,
   //   copyRevisionTextCommand
   // );
-  context.subscriptions.push(
-    reviseInsert
-  );
+  context.subscriptions.push(reviseInsert);
 };
 
 export const reviseInsertCommand = async (service: IRevisionService) => {
@@ -45,12 +43,13 @@ export const reviseInsertCommand = async (service: IRevisionService) => {
     if (text.trim() !== "") {
       const language = getSourceLanguageConfiguration();
       let writingStyle = getWritingStyleConfiguration();
-      if (writingStyle === "other"){
+      if (writingStyle === "other") {
         writingStyle = getOtherWritingStyleConfiguration();
       }
       let result = await service.revise(text, language, writingStyle);
       if (result !== "" && result !== undefined) {
         insertText(result);
+        window.showInformationMessage(`Revised text in the ${writingStyle} tone inserted!`);
       } else {
         window.showInformationMessage(`No revised text found!`);
       }
