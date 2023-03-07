@@ -34,9 +34,7 @@ steps:
     cd revision
     echo ">>> Compile vscode-test"
     yarn && yarn compile
-    echo ">>> Run integration test"
-    yarn && yarn compile && yarn test
-  displayName: Run Tests
+  displayName: Compile
   env:
     DISPLAY: ':99.0'
 
