@@ -1,9 +1,9 @@
 import {
   getOtherWritingStyleConfiguration,
   getSourceLanguageConfiguration,
+  getTargetLanguageConfiguration,
   getWritingStyleConfiguration,
 } from "./config";
-import { getContent } from "./store";
 import { CommandIds } from "./consts";
 import {
   getParagraph,
@@ -12,7 +12,7 @@ import {
   setCurrentEditor,
 } from "./doc-service";
 import { IRevisionService } from "./revision-service";
-import { commands, env, ExtensionContext, StatusBarItem, window } from "vscode";
+import { commands, ExtensionContext, window } from "vscode";
 
 export const regiserCommands = (
   context: ExtensionContext,
@@ -23,23 +23,19 @@ export const regiserCommands = (
     async () => await reviseInsertCommand(servie)
   );
 
-  //   let translate = commands.registerCommand(
-  //     CommandIds.translateCommand,
-  //     async () => await translateCommand(servie, source, target, statusBarItem)
-  //   );
+  let translate = commands.registerCommand(
+    CommandIds.translateInsertCommand,
+    async () => await translateInsertCommand(servie)
+  );
 
-  // let copyRevisionText = commands.registerCommand(
-  //   CommandIds.copyRevisionTextCommand,
-  //   copyRevisionTextCommand
-  // );
-  context.subscriptions.push(reviseInsert);
+  context.subscriptions.push(reviseInsert, translate);
 };
 
 export const reviseInsertCommand = async (service: IRevisionService) => {
   // The code you place here will be executed every time your command is executed
   setCurrentEditor();
   let text = getSelectionText();
-  if (text === "") {
+  if (text.trim() === "") {
     text = getParagraph();
   }
   try {
@@ -52,7 +48,9 @@ export const reviseInsertCommand = async (service: IRevisionService) => {
       let result = await service.revise(text, language, writingStyle);
       if (result !== "" && result !== undefined) {
         insertText(result);
-        window.showInformationMessage(`Revised text in the ${writingStyle} tone inserted!`);
+        window.showInformationMessage(
+          `Revised text in the ${writingStyle} tone inserted!`
+        );
       } else {
         window.showInformationMessage(`No revised text found!`);
       }
@@ -62,16 +60,26 @@ export const reviseInsertCommand = async (service: IRevisionService) => {
   }
 };
 
-// export const copyRevisionTextCommand = () => {
-//   try {
-//     var content = getContent();
-//     copyToClipboard(content);
-//   } catch (error: any) {
-//     window.showErrorMessage(`Error occurs. ${error}`);
-//   }
-// };
-
-// const copyToClipboard = (content: string) => {
-//   env.clipboard.writeText(content);
-//   window.showInformationMessage(`Revised text copyied to the clipboard!`);
-// };
+export const translateInsertCommand = async (service: IRevisionService) => {
+  // The code you place here will be executed every time your command is executed
+  setCurrentEditor();
+  let text = getSelectionText();
+  if (text.trim() === "") {
+    text = getParagraph();
+  }
+  try {
+    if (text.trim() !== "") {
+      const source = getSourceLanguageConfiguration();
+      const target = getTargetLanguageConfiguration();
+      let result = await service.translate(text, source, target);
+      if (result !== "" && result !== undefined) {
+        insertText(result);
+        window.showInformationMessage(`Translated text inserted!`);
+      } else {
+        window.showInformationMessage(`Translation request failed!`);
+      }
+    }
+  } catch (error: any) {
+    window.showErrorMessage(`Error occurs. ${error}`);
+  }
+};

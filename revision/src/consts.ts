@@ -1,5 +1,4 @@
 export enum CommandIds {
-    reviseInsertCommand = 'revision.reviseInsert',
-    copyRevisionTextCommand = 'revision.copyRevisionText',
-  }
-  
+  reviseInsertCommand = "revision.reviseInsert",
+  translateInsertCommand = "revision.translateInsert",
+}

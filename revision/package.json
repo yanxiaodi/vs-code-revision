@@ -16,6 +16,10 @@
       {
         "command": "revision.reviseInsert",
         "title": "Revise & Insert"
+      },
+      {
+        "command": "revision.translateInsert",
+        "title": "Translate & Insert"
       }
     ],
     "keybindings": [
@@ -23,6 +27,12 @@
         "command": "revision.reviseInsert",
         "key": "shift+alt+r",
         "mac": "shift+alt+r",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "revision.translateInsert",
+        "key": "shift+t",
+        "mac": "shift+t",
         "when": "editorTextFocus"
       }
     ],
@@ -39,11 +49,6 @@
             "OpenAI API."
           ],
           "description": "Specify the api to revise the text. Will support Azure OpenAI in the future."
-        },
-        "revision.azureOpenAIApiKey": {
-          "type": "string",
-          "default": "",
-          "description": "The API key for Azure OpenAI."
         },
         "revision.openAIApiKey": {
           "type": "string",
@@ -81,22 +86,115 @@
         "revision.otherWritingStyle": {
           "type": "string",
           "default": "neutral",
-          "description": "If the writing style is set to other, specify the writing style here."
+          "description": "If the writing style is set to 'other', specify the writing style here, e.g., narrative, neutral, conversational, etc."
         },
         "revision.sourceLanguage": {
           "type": "string",
-          "default": "en",
-          "description": "The source language to be revised."
+          "default": "English",
+          "enum": [
+            "English",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
+            "Spanish",
+            "French",
+            "German",
+            "Italian",
+            "Portuguese",
+            "Dutch",
+            "Russian",
+            "Arabic",
+            "Japanese",
+            "Korean",
+            "Indonesian",
+            "Thai",
+            "Turkish",
+            "Vietnamese",
+            "Polish",
+            "Swedish",
+            "Norwegian",
+            "Danish",
+            "Finnish",
+            "Greek",
+            "Czech",
+            "Slovak",
+            "Romanian",
+            "Hungarian",
+            "Bulgarian",
+            "Hebrew",
+            "Hindi",
+            "Bengali",
+            "Urdu",
+            "Punjabi",
+            "Tamil",
+            "Telugu",
+            "Marathi",
+            "Gujarati",
+            "Kannada",
+            "Malayalam",
+            "Oriya",
+            "Assamese",
+            "Persian",
+            "Swahili",
+            "Yoruba",
+            "Igbo",
+            "Zulu",
+            "Xhosa"
+          ],
+          "description": "The source language to be revised or translated."
         },
         "revision.targetLanguage": {
           "type": "string",
-          "default": "zh-CN",
-          "description": "The target language to be revised or translated."
-        },
-        "revision.enableSelectionHoverRevision": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable the hover translation when the selection is not empty."
+          "default": "Chinese (Simplified)",
+          "enum": [
+            "English",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
+            "Spanish",
+            "French",
+            "German",
+            "Italian",
+            "Portuguese",
+            "Dutch",
+            "Russian",
+            "Arabic",
+            "Japanese",
+            "Korean",
+            "Indonesian",
+            "Thai",
+            "Turkish",
+            "Vietnamese",
+            "Polish",
+            "Swedish",
+            "Norwegian",
+            "Danish",
+            "Finnish",
+            "Greek",
+            "Czech",
+            "Slovak",
+            "Romanian",
+            "Hungarian",
+            "Bulgarian",
+            "Hebrew",
+            "Hindi",
+            "Bengali",
+            "Urdu",
+            "Punjabi",
+            "Tamil",
+            "Telugu",
+            "Marathi",
+            "Gujarati",
+            "Kannada",
+            "Malayalam",
+            "Oriya",
+            "Assamese",
+            "Persian",
+            "Swahili",
+            "Yoruba",
+            "Igbo",
+            "Zulu",
+            "Xhosa"
+          ],
+          "description": "The target language to be translated."
         }
       }
     }
