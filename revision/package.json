@@ -31,16 +31,14 @@
       "properties": {
         "revision.api": {
           "type": "string",
-          "default": "azure-openai",
+          "default": "openai",
           "enum": [
-            "azure-openai",
             "openai"
           ],
           "enumDescriptions": [
-            "Azure OpenAI API.",
             "OpenAI API."
           ],
-          "description": "Specify the api to revise the text."
+          "description": "Specify the api to revise the text. Will support Azure OpenAI in the future."
         },
         "revision.azureOpenAIApiKey": {
           "type": "string",
@@ -61,12 +59,11 @@
             "casual",
             "humorous",
             "sarcastic",
-            "persuasive",
             "informative",
             "empathetic",
             "authoritative",
             "poetic",
-            "exaggeration"
+            "other"
           ],
           "enumDescriptions": [
             "A professional tone that is appropriate for business documents, such as proposals, reports, and presentations.",
@@ -74,13 +71,17 @@
             "A casual tone that is appropriate for documents that are meant to be read by friends, family, or colleagues.",
             "A humorous tone that is fun and playful.",
             "A sarcastic tone that is characterized by its use of irony and sarcasm, often used to express displeasure or frustration.",
-            "A persuasive tone aims to convince the reader of a particular point of view or argument.",
             "An informative tone that focuses on presenting factual information in a clear and concise manner.",
             "An empathetic tone that is used to express understanding and compassion towards the reader, often used in customer service or support contexts.",
             "An authoritative tone that is used to convey expertise and authority on a particular subject, often used in instructional or educational contexts.",
             "A poetic tone that is appropriate for poems, song lyrics, and other works of art.",
-            "An exaggeration tone that is appropriate for expressing strong feelings."
+            "A custom tone that is not one of the above."
           ]
+        },
+        "revision.otherWritingStyle": {
+          "type": "string",
+          "default": "neutral",
+          "description": "If the writing style is set to other, specify the writing style here."
         },
         "revision.sourceLanguage": {
           "type": "string",
@@ -112,19 +113,22 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.76.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
+    "@types/vscode": "^1.76.0",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "@vscode/test-electron": "^2.2.3",
     "eslint": "^8.34.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^4.9.5",
     "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "@vscode/test-electron": "^2.2.3"
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "openai": "^3.2.1"
   }
 }

@@ -20,6 +20,10 @@ export const getWritingStyleConfiguration = () => {
   return getConfiguration<string>("writingStyle") ?? "professional";
 };
 
+export const getOtherWritingStyleConfiguration = () => {
+  return getConfiguration<string>("otherWritingStyle") ?? "professional";
+};
+
 export const getSourceLanguageConfiguration = () => {
   return getConfiguration<string>("sourceLanguage") ?? "en";
 };

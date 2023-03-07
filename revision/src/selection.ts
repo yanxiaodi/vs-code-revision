@@ -48,7 +48,7 @@ const showHover = async (
     const text = e.textEditor.document.getText(selections[0]);
     setContent("");
     const result = await revisionService.revise(text, source, target);
-    setContent(result);
+    setContent(result ?? "");
     commands.executeCommand("editor.action.showHover");
   } catch (error: any) {
     window.showErrorMessage(`Error occurs. ${error}`);

@@ -2,6 +2,7 @@ import {
 	getSourceLanguageConfiguration,
 	getApiConfiguration,
 	getTargetLanguageConfiguration,
+	getOpenAIApiKeyConfiguration,
   } from './config';
   import { registerSelectionBehavior } from './selection';
   import { registerHover } from './hover';
@@ -20,20 +21,18 @@ import {
   // your extension is activated the very first time the command is executed
   export function activate(context: ExtensionContext) {
 	const api = getApiConfiguration();
-	const source = getSourceLanguageConfiguration();
-	const target = getTargetLanguageConfiguration();
 	const service = RevisionServiceFactory.createServiceInstance(api);
   
-	let statusBarItem: StatusBarItem = window.createStatusBarItem(
-	  StatusBarAlignment.Left
-	);
-	statusBarItem.command = CommandIds.copyRevisionTextCommand;
+	// let statusBarItem: StatusBarItem = window.createStatusBarItem(
+	//   StatusBarAlignment.Left
+	// );
+	// statusBarItem.command = CommandIds.copyRevisionTextCommand;
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	regiserCommands(context, service, source, target, statusBarItem);
+	regiserCommands(context, service);
 	registerHover(context);
-	registerSelectionBehavior(context, service, source, target);
+	//registerSelectionBehavior(context, service, source, target);
   }
   
   // this method is called when your extension is deactivated
