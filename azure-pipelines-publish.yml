@@ -34,7 +34,6 @@ steps:
 
 - bash: |
     echo ">>> Compile vscode-test"
-    cd revision
     yarn && yarn compile
   displayName: Compile
   env:
@@ -42,7 +41,6 @@ steps:
 
 - bash: |
     echo ">>> Publish"
-    cd revision
     yarn deploy
   displayName: Publish
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))

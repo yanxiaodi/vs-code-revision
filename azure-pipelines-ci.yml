@@ -34,7 +34,6 @@ steps:
 
 - bash: |
     echo ">>> Compile vscode-test"
-    cd revision
     yarn && yarn compile
   displayName: Compile
   env:

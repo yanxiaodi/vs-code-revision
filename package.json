@@ -1,7 +1,7 @@
 {
   "name": "revision",
   "displayName": "ReVision",
-  "description": "A tool to revise your writing and translate your text.",
+  "description": "An AI tool to revise your writing in various styles and translate your text.",
   "version": "0.0.1",
   "publisher": "XiaodiYan",
   "repository": "https://github.com/yanxiaodi/vs-code-revision",
@@ -17,9 +17,13 @@
     "rewrite",
     "openai",
     "grammarly",
-    "revision"
-],
-  "activationEvents": ["*"],
+    "revision",
+    "chatgpt"
+  ],
+  "icon": "assets/icon.png",
+  "activationEvents": [
+    "*"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
