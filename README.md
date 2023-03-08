@@ -80,7 +80,7 @@ ReVision can also translate your text into a different language. You need to set
 * Zulu
 * Xhosa
 
-Click any text in your document or select a sentence/paragraph, then press `Shift+T` to translate the text. If you haven't selected any text, ReVision will automatically select the current paragraph.
+Click any text in your document or select a sentence/paragraph, then press `Ctrl+Shift+T` to translate the text. If you haven't selected any text, ReVision will automatically select the current paragraph.
 
 The translated text will be automatically inserted into your document.
 
@@ -105,13 +105,17 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-The keybinding might not work properly on some Linux machines, or conflict with other extensions. Please open issues to describe your environment. Thanks.
+The keybinding might not work properly on some Linux machines or conflict with other extensions. Please open issues to describe your environment. Thanks.
 
 ## Release Notes
 
+### 0.0.2
+
+Fix the keybinding issue.
+
 ### 0.0.1
 
-Initial release of the extension.
+The initial release of the extension.
 
 ## For more information
 

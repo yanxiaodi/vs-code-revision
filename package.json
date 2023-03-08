@@ -2,7 +2,7 @@
   "name": "revision",
   "displayName": "ReVision",
   "description": "An AI tool to revise your writing in various styles and translate your text.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "XiaodiYan",
   "repository": "https://github.com/yanxiaodi/vs-code-revision",
   "engines": {
@@ -45,8 +45,8 @@
       },
       {
         "command": "revision.translateInsert",
-        "key": "shift+t",
-        "mac": "shift+t",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
         "when": "editorTextFocus"
       }
     ],
@@ -101,6 +101,11 @@
           "type": "string",
           "default": "neutral",
           "description": "If the writing style is set to 'other', specify the writing style here, e.g., narrative, neutral, conversational, etc."
+        },
+        "revision.maxTokens": {
+          "type": "number",
+          "default": "1500",
+          "description": "OpenAI API has a limit of 4097 tokens shared between prompt and completion. So please set this value to be less than 2000 to avoid errors."
         },
         "revision.sourceLanguage": {
           "type": "string",

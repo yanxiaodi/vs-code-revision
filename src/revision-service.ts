@@ -1,4 +1,4 @@
-import { getOpenAIApiKeyConfiguration } from "./config";
+import { getMaxTokensConfiguration, getOpenAIApiKeyConfiguration } from "./config";
 import { OpenAIApi } from "openai";
 import { Configuration } from "openai/dist/configuration";
 import { window } from "vscode";
@@ -61,11 +61,12 @@ export class OpenAIRevisionService implements IRevisionService {
     writingStyle: string
   ): Promise<string | undefined> {
     try {
+      const maxTokens = getMaxTokensConfiguration();
       const response = await this.openaiService.createCompletion({
         model: "text-davinci-003",
         prompt: `Revise this into better sentences and paragraphs in ${language} using a ${writingStyle} tone:\n\n${text}\n\n`,
         temperature: 0.3,
-        max_tokens: 2048,
+        max_tokens: maxTokens,
         top_p: 1.0,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,

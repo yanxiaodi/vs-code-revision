@@ -35,3 +35,7 @@ export const getTargetLanguageConfiguration = () => {
 export const getEnableSelectionHoverRevisionConfiguration = () => {
   return getConfiguration<boolean>("enableSelectionHoverRevision") ?? true;
 };
+
+export const getMaxTokensConfiguration = () => {
+  return getConfiguration<number>("maxTokens") ?? 1500;
+};
