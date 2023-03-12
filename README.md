@@ -6,6 +6,14 @@
 
 ReVision depends on the [OpenAI API](https://openai.com/blog/openai-api/). You can sign up for a free account [here](https://beta.openai.com/). Once you have an account, you can generate an API key [here](https://beta.openai.com/account/api-keys). You can then paste your API key into the extension settings.
 
+Revise the text using ReVision:
+
+![Revising](assets/revising.gif)
+
+Translate the text using ReVision:
+
+![Translating](assets/translating.gif)
+
 ### Revising
 
 ReVision supports multiple writing styles. You can choose from the following styles:
