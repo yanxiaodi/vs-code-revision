@@ -2,7 +2,7 @@
   "name": "revision",
   "displayName": "ReVision",
   "description": "An AI tool to revise your writing in various styles and translate your text.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "XiaodiYan",
   "repository": "https://github.com/yanxiaodi/vs-code-revision",
   "engines": {
