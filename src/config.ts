@@ -12,6 +12,14 @@ export const getAzureOpenAIApiKeyConfiguration = () => {
   return getConfiguration<string>("azureOpenAIApiKey");
 };
 
+export const getAzureOpenAIDeploymentNameConfiguration = () => {
+  return getConfiguration<string>("azureOpenAIDeploymentName") ?? "";
+};
+
+export const getAzureOpenAIEndpointConfiguration = () => {
+  return getConfiguration<string>("azureOpenAIEndpoint") ?? "";
+};
+
 export const getOpenAIApiKeyConfiguration = () => {
   return getConfiguration<string>("openAIApiKey");
 };

@@ -4,7 +4,10 @@
 
 ## Features
 
-ReVision depends on the [OpenAI API](https://openai.com/blog/openai-api/). You can sign up for a free account [here](https://beta.openai.com/). Once you have an account, you can generate an API key [here](https://beta.openai.com/account/api-keys). You can then paste your API key into the extension settings.
+ReVision can use OpenAI or Azure OpenAI:
+
+* [OpenAI API](https://openai.com/blog/openai-api/). You can sign up for a free account [here](https://beta.openai.com/). Once you have an account, you can generate an API key [here](https://beta.openai.com/account/api-keys). You can then paste your API key into the extension settings.
+* [Azure OpenAI API](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/). Azure OpenAI is a paid service provided by Microsoft. If you have got the API key, you can paste it into the extension settings. Besides the API key, you also need to specify the endpoint URL and the deployment name. Currently, ReVision only supports the `text-davinci-003` model. If you want to use other models, please open an issue.
 
 Revise the text using ReVision:
 
@@ -116,6 +119,10 @@ This extension contributes the following settings:
 The keybinding might not work properly on some Linux machines or conflict with other extensions. Please open issues to describe your environment. Thanks.
 
 ## Release Notes
+
+### 0.0.3
+
+Add support for Azure OpenAI.
 
 ### 0.0.2
 

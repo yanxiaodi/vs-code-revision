@@ -57,17 +57,34 @@
           "type": "string",
           "default": "openai",
           "enum": [
-            "openai"
+            "openai",
+            "azure-openai"
           ],
           "enumDescriptions": [
-            "OpenAI API."
+            "OpenAI API.",
+            "Azure OpenAI API."
           ],
-          "description": "Specify the api to revise the text. Will support Azure OpenAI in the future."
+          "description": "Specify the api to revise the text."
         },
         "revision.openAIApiKey": {
           "type": "string",
           "default": "",
-          "description": "The API key for OpenAI."
+          "description": "The API key of OpenAI."
+        },
+        "revision.azureOpenAIApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "The API key of Azure OpenAI."
+        },
+        "revision.azureOpenAIDeploymentName": {
+          "type": "string",
+          "default": "",
+          "description": "The deployment name of Azure OpenAI."
+        },
+        "revision.azureOpenAIEndpoint": {
+          "type": "string",
+          "default": "",
+          "description": "The endpoint of Azure OpenAI."
         },
         "revision.writingStyle": {
           "type": "string",
@@ -248,6 +265,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
+    "azure-openai": "^0.9.4",
     "openai": "^3.2.1"
   }
 }
