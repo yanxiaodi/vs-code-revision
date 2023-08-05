@@ -3,6 +3,8 @@ import {
   getSourceLanguageConfiguration,
   getTargetLanguageConfiguration,
   getWritingStyleConfiguration,
+  getReviseActionConfiguration,
+  getTranslateActionConfiguration,
 } from "./config";
 import { CommandIds } from "./consts";
 import {
@@ -12,7 +14,7 @@ import {
   setCurrentEditor,
 } from "./doc-service";
 import { IRevisionService } from "./revision-service";
-import { commands, ExtensionContext, window } from "vscode";
+import { commands, env, ExtensionContext, window } from "vscode";
 
 export const regiserCommands = (
   context: ExtensionContext,
@@ -47,10 +49,19 @@ export const reviseInsertCommand = async (service: IRevisionService) => {
       }
       let result = await service.revise(text, language, writingStyle);
       if (result !== "" && result !== undefined) {
-        insertText(result);
-        window.showInformationMessage(
-          `Revised text in the ${writingStyle} tone inserted!`
-        );
+        const action = getReviseActionConfiguration();
+        if (action === "insert") {
+          insertText(result);
+          window.showInformationMessage(
+            `Revised text in the ${writingStyle} tone inserted!`
+          );
+        }
+        else{
+          copyToClipboard(result);
+          window.showInformationMessage(
+            `Revised text in the ${writingStyle} tone copied to clipboard!`
+          );
+        }
       } else {
         window.showInformationMessage(`No revised text found!`);
       }
@@ -73,8 +84,15 @@ export const translateInsertCommand = async (service: IRevisionService) => {
       const target = getTargetLanguageConfiguration();
       let result = await service.translate(text, source, target);
       if (result !== "" && result !== undefined) {
-        insertText(result);
-        window.showInformationMessage(`Translated text inserted!`);
+        const action = getTranslateActionConfiguration();
+        if (action === "insert") {
+          insertText(result);
+          window.showInformationMessage(`Translated text inserted!`);
+        }
+        else{
+          copyToClipboard(result);
+          window.showInformationMessage(`Translated text copied to clipboard!`);
+        }
       } else {
         window.showInformationMessage(`Translation request failed!`);
       }
@@ -82,4 +100,8 @@ export const translateInsertCommand = async (service: IRevisionService) => {
   } catch (error: any) {
     window.showErrorMessage(`Error occurs. ${error}`);
   }
+};
+
+const copyToClipboard = (text: string) => {
+  env.clipboard.writeText(text);
 };

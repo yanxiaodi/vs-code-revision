@@ -97,6 +97,14 @@ The translated text will be automatically inserted into your document.
 
 Note that OpenAI supports more languages but we have not yet added them to the extension. Maybe you can help us add them?
 
+## Choosing your preferred action when revising/translating
+
+ReVision provides two actions when revising/translating the text: `insert` and `copy to clipboard`. You can choose your preferred action in the extension settings.
+
+The default option is `insert`, which will insert the revised/translated text into your document after the original text. But you cannot change the cursor position when inserting the text, otherwise the text will be inserted at the wrong position.
+
+If you need to continue writing while revising/translating the text, you can choose the `copy to clipboard` option. This option will copy the revised/translated text to the clipboard only, so you can paste it anywhere you want.
+
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
@@ -113,12 +121,18 @@ This extension contributes the following settings:
 * `revision.otherWritingStyle`: If you choose `other` as the writing style, you can specify your own style here.
 * `revision.sourceLanguage`: The source language of your text.
 * `revision.targetLanguage`: The target language of your text.
+* `revision.reviseAction`: The action to perform when revising the text. You can choose from `insert` and `copy to clipboard`.
+* `revision.translateAction`: The action to perform when translating the text. You can choose from `insert` and `copy to clipboard`.
 
 ## Known Issues
 
 The keybinding might not work properly on some Linux machines or conflict with other extensions. Please open issues to describe your environment. Thanks.
 
 ## Release Notes
+
+### 0.0.4
+
+Add options to specify the action to perform when revising/translating the text. You can choose from `insert` and `copy to clipboard`.
 
 ### 0.0.3
 

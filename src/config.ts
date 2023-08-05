@@ -47,3 +47,11 @@ export const getEnableSelectionHoverRevisionConfiguration = () => {
 export const getMaxTokensConfiguration = () => {
   return getConfiguration<number>("maxTokens") ?? 1500;
 };
+
+export const getReviseActionConfiguration = () => {
+  return getConfiguration<string>("reviseAction") ?? "insert";
+};
+
+export const getTranslateActionConfiguration = () => {
+  return getConfiguration<string>("translateAction") ?? "insert";
+};
