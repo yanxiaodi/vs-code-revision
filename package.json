@@ -2,7 +2,7 @@
   "name": "revision",
   "displayName": "ReVision",
   "description": "An AI tool to revise your writing in various styles and translate your text.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "XiaodiYan",
   "repository": "https://github.com/yanxiaodi/vs-code-revision",
   "engines": {
@@ -112,7 +112,8 @@
             "An authoritative tone that is used to convey expertise and authority on a particular subject, often used in instructional or educational contexts.",
             "A poetic tone that is appropriate for poems, song lyrics, and other works of art.",
             "A custom tone that is not one of the above."
-          ]
+          ],
+          "description": "Specify the writing style to revise the text."
         },
         "revision.otherWritingStyle": {
           "type": "string",
@@ -231,6 +232,32 @@
             "Xhosa"
           ],
           "description": "The target language to be translated."
+        },
+        "revision.reviseAction":{
+          "type": "string",
+          "default": "insert",
+          "enum": [
+            "insert",
+            "copy to clipboard"
+          ],
+          "enumDescriptions": [
+            "Insert the revised text into the editor.",
+            "Copy the revised text to the clipboard."
+          ],
+          "description": "Specify the action to perform after revising the text."
+        },
+        "revision.translateAction":{
+          "type": "string",
+          "default": "insert",
+          "enum": [
+            "insert",
+            "copy to clipboard"
+          ],
+          "enumDescriptions": [
+            "Insert the translated text into the editor.",
+            "Copy the translated text to the clipboard."
+          ],
+          "description": "Specify the action to perform after translating the text."
         }
       }
     }
