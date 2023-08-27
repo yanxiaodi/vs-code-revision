@@ -31,11 +31,13 @@ ReVision supports multiple writing styles. You can choose from the following sty
 * authoritative
 * poetic
 
-You can also define your own style by choosing the `other` option in the settings, then specifying your own style in the `otherWritingStyle` setting, for example, narrative.
+Click any text in your document or select a sentence/paragraph, then press `Shift+Alt+R` to revise the text. If you have not selected any text, ReVision will automatically select the current paragraph.
 
-Click any text in your document or select a sentence/paragraph, then press `Shift+Alt+R` to revise the text. If you haven't selected any text, ReVision will automatically select the current paragraph.
+The revised text will be automatically inserted into your document. If you want to copy the revised text to the clipboard instead, you can change the `reviseAction` setting to `copy to clipboard`. See the **Choosing your preferred action when revising/translating** section below for more details.
 
-The revised text will be automatically inserted into your document.
+### Choosing your own writing style
+
+You can define your own style by choosing the `other` option in the settings, then specifying your own style in the `otherWritingStyle` setting, for example, narrative.
 
 Note that the generated text depends on your original text, so the styles may not accurately reflect the style you have selected. For example, you cannot use ReVision to generate a humorous text from a professional text.
 
@@ -105,13 +107,23 @@ The default option is `insert`, which will insert the revised/translated text in
 
 If you need to continue writing while revising/translating the text, you can choose the `copy to clipboard` option. This option will copy the revised/translated text to the clipboard only, so you can paste it anywhere you want.
 
-## Requirements
+## Customizing the prompts
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+You can customize the prompts in the extension settings. You can choose `default` or `custom` as the prompt type.
+
+The default prompts are:
+
+* **revisisonPrompt**: `Revise this into better sentences and paragraphs in ${sourceLanguage} using a ${writingStyle} tone:\n\n${text}\n\n`.
+* **translationPrompt**: `Translate this from ${sourceLanguage} to ${targetLanguage}:\n\n${text}\n\n`. 
+
+If you choose `custom` as the prompt type, you can specify your own prompts in the `revisionPrompt` and `translationPrompt` settings. You can use the following variables in your prompts:
+
+* **revisionCustomPrompt**: You need to include `${sourceLanguage}`, `${writingStyle}` and `${text}` in your prompt.
+* **translationCustomPrompt**: You need to include `${sourceLanguage}`, `${targetLanguage}` and `${text}` in your prompt.
 
 ## Extension Settings
 
-You can change the writing style, source language and target language in the extension settings.
+You can change the writing style, source language, target language and prompts in the extension settings.
 
 This extension contributes the following settings:
 
@@ -123,12 +135,20 @@ This extension contributes the following settings:
 * `revision.targetLanguage`: The target language of your text.
 * `revision.reviseAction`: The action to perform when revising the text. You can choose from `insert` and `copy to clipboard`.
 * `revision.translateAction`: The action to perform when translating the text. You can choose from `insert` and `copy to clipboard`.
+* `revision.revisionPromptType`: The prompt type to use when revising the text. You can choose from `default` and `custom`.
+* `revision.translationPromptType`: The prompt type to use when translating the text. You can choose from `default` and `custom`.
+* `revision.revisionCustomPrompt`: The prompt to use when revising the text if you choose `custom` for `revision.revisionPromptType`. You can use `${sourceLanguage}`, `${writingStyle}` and `${text}` in your prompt.
+* `revision.translationCustomPrompt`: The prompt to use when translating the text if you choose `custom` for `revision.translationPromptType`. You can use `${sourceLanguage}`, `${targetLanguage}` and `${text}` in your prompt.
 
 ## Known Issues
 
 The keybinding might not work properly on some Linux machines or conflict with other extensions. Please open issues to describe your environment. Thanks.
 
 ## Release Notes
+
+### 0.0.5
+
+Add support for customizing the prompts.
 
 ### 0.0.4
 
