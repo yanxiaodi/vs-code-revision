@@ -2,7 +2,7 @@
   "name": "revision",
   "displayName": "ReVision",
   "description": "An AI tool to revise your writing in various styles and translate your text.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "XiaodiYan",
   "repository": "https://github.com/yanxiaodi/vs-code-revision",
   "engines": {
@@ -85,6 +85,40 @@
           "type": "string",
           "default": "",
           "description": "The endpoint of Azure OpenAI."
+        },
+        "revision.revisionPromptType":{
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "Use the default prompt for revision.",
+            "Use a custom prompt for revision."
+          ]
+        },
+        "revision.revisionCustomPrompt": {
+          "type": "string",
+          "default": "Revise this into better sentences and paragraphs in ${language} using a ${writingStyle} tone:\n\n${text}\n\n",
+          "description": "The custom prompt to revise the text. Supported variables: ${text}, ${writingStyle}, ${maxTokens}, ${sourceLanguage}, ${targetLanguage}."
+        },
+        "revision.translationPromptType":{
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "Use the default prompt for translation.",
+            "Use a custom prompt for translation."
+          ]
+        },
+        "revision.translationCustomPrompt": {
+          "type": "string",
+          "default": "Translate this from ${sourceLanguage} to ${targetLanguage}:\n\n${text}\n\n",
+          "description": "The custom prompt to translate the text. Supported variables: ${text}, ${sourceLanguage}, ${targetLanguage}."
         },
         "revision.writingStyle": {
           "type": "string",

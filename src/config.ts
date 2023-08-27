@@ -55,3 +55,20 @@ export const getReviseActionConfiguration = () => {
 export const getTranslateActionConfiguration = () => {
   return getConfiguration<string>("translateAction") ?? "insert";
 };
+
+export const getRevisionPromptType = () => {
+  return getConfiguration<string>("revisionPromptType") ?? "default";
+};
+
+export const getRevisionCustomPrompt = () => {
+  return getConfiguration<string>("revisionCustomPrompt") ?? "Revise this into better sentences and paragraphs in ${language} using a ${writingStyle} tone:\n\n${text}\n\n";
+};
+
+export const getTranslationPromptType = () => {
+  return getConfiguration<string>("translationPromptType") ?? "default";
+};
+
+export const getTranslationCustomPrompt = () => {
+  return getConfiguration<string>("translationCustomPrompt") ?? "Translate this from ${sourceLanguage} to ${targetLanguage}:\n\n${text}\n\n";
+};
+
