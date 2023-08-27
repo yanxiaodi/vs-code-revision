@@ -4,14 +4,14 @@ import {
   getAzureOpenAIDeploymentNameConfiguration,
   getAzureOpenAIEndpointConfiguration,
 } from "./config";
-import { OpenAIApi, Configuration } from "azure-openai";
+import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
 
 import { window } from "vscode";
 import { IRevisionService } from "./revision-service";
 import { PromptHelper } from "./prompt-helper";
 
 export class AzureOpenAIRevisionService implements IRevisionService {
-  private openaiService: OpenAIApi;
+  private openaiService: OpenAIClient;
   constructor() {
     const apiKey = getAzureOpenAIApiKeyConfiguration();
     const endpoint = getAzureOpenAIEndpointConfiguration();
@@ -31,15 +31,8 @@ export class AzureOpenAIRevisionService implements IRevisionService {
         `Azure OpenAI deployment name is not set. Please set it in the settings then reload the window.`
       );
     }
-    const configuration = new Configuration({
-      apiKey: apiKey,
-      azure:{
-        apiKey: apiKey,
-        endpoint: endpoint,
-        deploymentName: deploymentName
-      }
-    });
-    this.openaiService = new OpenAIApi(configuration);
+    var key = new AzureKeyCredential(apiKey!);
+    this.openaiService = new OpenAIClient(endpoint, key);
   }
 
   async revise(
@@ -49,18 +42,24 @@ export class AzureOpenAIRevisionService implements IRevisionService {
   ): Promise<string | undefined> {
     try {
       const maxTokens = getMaxTokensConfiguration();
-      const prompt = PromptHelper.getRevisionPrompt(text, language, writingStyle);
-      const response = await this.openaiService.createCompletion({
-        model: getAzureOpenAIDeploymentNameConfiguration(),
-        prompt: prompt,
-        temperature: 0.3,
-        max_tokens: maxTokens,
-        top_p: 1.0,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
-        stop: null
-      });
-      let result = response.data.choices[0].text;
+      const prompt = PromptHelper.getRevisionPrompt(
+        text,
+        language,
+        writingStyle
+      );
+      const deploymentName = getAzureOpenAIDeploymentNameConfiguration();
+      const response = await this.openaiService.getCompletions(
+        deploymentName,
+        [prompt],
+        {
+          maxTokens: maxTokens,
+          temperature: 0.3,
+          topP: 1.0,
+          frequencyPenalty: 0.0,
+          presencePenalty: 0.0,
+        }
+      );
+      let result = response.choices[0].text;
       return result;
     } catch (error: any) {
       throw error;
@@ -73,17 +72,25 @@ export class AzureOpenAIRevisionService implements IRevisionService {
     targetLanguage: string
   ): Promise<string | undefined> {
     try {
-      const prompt = PromptHelper.getTranslationPrompt(text, sourceLanguage, targetLanguage);
-      const response = await this.openaiService.createCompletion({
-        model: "text-davinci-003",
-        prompt: prompt,
-        temperature: 0.3,
-        max_tokens: 2048,
-        top_p: 1.0,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
-      });
-      let result = response.data.choices[0].text;
+      const maxTokens = getMaxTokensConfiguration();
+      const prompt = PromptHelper.getTranslationPrompt(
+        text,
+        sourceLanguage,
+        targetLanguage
+      );
+      const deploymentName = getAzureOpenAIDeploymentNameConfiguration();
+      const response = await this.openaiService.getCompletions(
+        deploymentName,
+        [prompt],
+        {
+          maxTokens: maxTokens,
+          temperature: 0.3,
+          topP: 1.0,
+          frequencyPenalty: 0.0,
+          presencePenalty: 0.0,
+        }
+      );
+      let result = response.choices[0].text;
       return result;
     } catch (error: any) {
       throw error;
