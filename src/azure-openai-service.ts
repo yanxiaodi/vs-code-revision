@@ -8,6 +8,7 @@ import { OpenAIApi, Configuration } from "azure-openai";
 
 import { window } from "vscode";
 import { IRevisionService } from "./revision-service";
+import { PromptHelper } from "./prompt-helper";
 
 export class AzureOpenAIRevisionService implements IRevisionService {
   private openaiService: OpenAIApi;
@@ -48,9 +49,10 @@ export class AzureOpenAIRevisionService implements IRevisionService {
   ): Promise<string | undefined> {
     try {
       const maxTokens = getMaxTokensConfiguration();
+      const prompt = PromptHelper.getRevisionPrompt(text, language, writingStyle);
       const response = await this.openaiService.createCompletion({
         model: getAzureOpenAIDeploymentNameConfiguration(),
-        prompt: `Revise this into better sentences and paragraphs in ${language} using a ${writingStyle} tone:\n\n${text}\n\n`,
+        prompt: prompt,
         temperature: 0.3,
         max_tokens: maxTokens,
         top_p: 1.0,
@@ -71,9 +73,10 @@ export class AzureOpenAIRevisionService implements IRevisionService {
     targetLanguage: string
   ): Promise<string | undefined> {
     try {
+      const prompt = PromptHelper.getTranslationPrompt(text, sourceLanguage, targetLanguage);
       const response = await this.openaiService.createCompletion({
         model: "text-davinci-003",
-        prompt: `Translate this into ${targetLanguage} from ${sourceLanguage}:\n\n${text}\n\n`,
+        prompt: prompt,
         temperature: 0.3,
         max_tokens: 2048,
         top_p: 1.0,

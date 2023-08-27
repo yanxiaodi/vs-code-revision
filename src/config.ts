@@ -61,7 +61,7 @@ export const getRevisionPromptType = () => {
 };
 
 export const getRevisionCustomPrompt = () => {
-  return getConfiguration<string>("revisionCustomPrompt") ?? "Revise this into better sentences and paragraphs in ${language} using a ${writingStyle} tone:\n\n${text}\n\n";
+  return getConfiguration<string>("revisionCustomPrompt") ?? "Revise this into better sentences and paragraphs in ${sourceLanguage} using a ${writingStyle} tone:\n\n${text}\n\n";
 };
 
 export const getTranslationPromptType = () => {

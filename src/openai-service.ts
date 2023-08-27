@@ -1,11 +1,11 @@
 import { getMaxTokensConfiguration, getOpenAIApiKeyConfiguration } from "./config";
-import { OpenAIApi } from "openai";
-import { Configuration } from "openai/dist/configuration";
+import { OpenAI } from "openai";
 import { window } from "vscode";
 import { IRevisionService } from "./revision-service";
+import { PromptHelper } from "./prompt-helper";
 
 export class OpenAIRevisionService implements IRevisionService {
-    private openaiService: OpenAIApi;
+    private openaiService: OpenAI;
     constructor() {
       const apiKey = getOpenAIApiKeyConfiguration();
       if (apiKey === "") {
@@ -13,10 +13,9 @@ export class OpenAIRevisionService implements IRevisionService {
           `OpenAI API key is not set. Please set it in the settings then reload the window.`
         );
       }
-      const configuration = new Configuration({
+      this.openaiService = new OpenAI({
         apiKey: apiKey,
       });
-      this.openaiService = new OpenAIApi(configuration);
     }
   
     async revise(
@@ -26,16 +25,17 @@ export class OpenAIRevisionService implements IRevisionService {
     ): Promise<string | undefined> {
       try {
         const maxTokens = getMaxTokensConfiguration();
-        const response = await this.openaiService.createCompletion({
+        const prompt = PromptHelper.getRevisionPrompt(text, language, writingStyle);
+        const response = await this.openaiService.completions.create({
           model: "text-davinci-003",
-          prompt: `Revise this into better sentences and paragraphs in ${language} using a ${writingStyle} tone:\n\n${text}\n\n`,
+          prompt: prompt,
           temperature: 0.3,
           max_tokens: maxTokens,
           top_p: 1.0,
           frequency_penalty: 0.0,
           presence_penalty: 0.0,
         });
-        let result = response.data.choices[0].text;
+        let result = response.choices[0].text;
         return result;
       } catch (error: any) {
         throw error;
@@ -48,16 +48,17 @@ export class OpenAIRevisionService implements IRevisionService {
       targetLanguage: string
     ): Promise<string | undefined> {
       try {
-        const response = await this.openaiService.createCompletion({
+        const prompt = PromptHelper.getTranslationPrompt(text, sourceLanguage, targetLanguage);
+        const response = await this.openaiService.completions.create({
           model: "text-davinci-003",
-          prompt: `Translate this into ${targetLanguage} from ${sourceLanguage}:\n\n${text}\n\n`,
+          prompt: prompt,
           temperature: 0.3,
           max_tokens: 2048,
           top_p: 1.0,
           frequency_penalty: 0.0,
           presence_penalty: 0.0,
         });
-        let result = response.data.choices[0].text;
+        let result = response.choices[0].text;
         return result;
       } catch (error: any) {
         throw error;
