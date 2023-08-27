@@ -24,7 +24,6 @@ steps:
   inputs:
     versionSource: 'spec'
     versionSpec: '18.17.x'
-    checkLatest: true
   displayName: 'Install Node.js'
 
 - bash: |
