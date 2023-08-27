@@ -23,7 +23,8 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSource: 'spec'
-    versionSpec: '20.5.x'
+    versionSpec: '18.17.x'
+    checkLatest: true
   displayName: 'Install Node.js'
 
 - bash: |
