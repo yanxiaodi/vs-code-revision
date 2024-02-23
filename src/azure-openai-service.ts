@@ -4,14 +4,14 @@ import {
   getAzureOpenAIDeploymentNameConfiguration,
   getAzureOpenAIEndpointConfiguration,
 } from "./config";
-import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
+const { OpenAIClient, AzureKeyCredential } = require("@azure/openai");
 
 import { window } from "vscode";
 import { IRevisionService } from "./revision-service";
 import { PromptHelper } from "./prompt-helper";
 
 export class AzureOpenAIRevisionService implements IRevisionService {
-  private openaiService: OpenAIClient;
+  private openaiService: typeof OpenAIClient;
   constructor() {
     const apiKey = getAzureOpenAIApiKeyConfiguration();
     const endpoint = getAzureOpenAIEndpointConfiguration();

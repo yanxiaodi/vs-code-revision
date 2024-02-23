@@ -16,18 +16,18 @@ import {
 import { IRevisionService } from "./revision-service";
 import { commands, env, ExtensionContext, window } from "vscode";
 
-export const regiserCommands = (
+export const registerCommands = (
   context: ExtensionContext,
-  servie: IRevisionService
+  service: IRevisionService
 ) => {
   let reviseInsert = commands.registerCommand(
     CommandIds.reviseInsertCommand,
-    async () => await reviseInsertCommand(servie)
+    async () => await reviseInsertCommand(service)
   );
 
   let translate = commands.registerCommand(
     CommandIds.translateInsertCommand,
-    async () => await translateInsertCommand(servie)
+    async () => await translateInsertCommand(service)
   );
 
   context.subscriptions.push(reviseInsert, translate);

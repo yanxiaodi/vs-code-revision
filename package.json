@@ -2,7 +2,7 @@
   "name": "revision",
   "displayName": "ReVision",
   "description": "An AI tool to revise your writing in various styles and translate your text.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "XiaodiYan",
   "repository": "https://github.com/yanxiaodi/vs-code-revision",
   "engines": {
@@ -297,38 +297,31 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
-    "deploy": "vsce publish --yarn"
+    "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "20.x",
-    "@types/sinon": "^10.0.16",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/sinon": "^17.0.3",
     "@types/vscode": "^1.76.0",
-    "@typescript-eslint/eslint-plugin": "^6.4.1",
-    "@typescript-eslint/parser": "^6.4.1",
-    "@vscode/test-electron": "^2.3.4",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9",
     "@vscode/vsce": "^2.20.1",
-    "eslint": "^8.48.0",
-    "glob": "^10.3.3",
+    "eslint": "^8.56.0",
     "mocha": "^10.2.0",
-    "sinon": "^15.2.0",
+    "sinon": "^17.0.1",
     "ts-loader": "^9.4.4",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@azure/openai": "^1.0.0-beta.5",
-    "openai": "^4.3.0"
+    "@azure/openai": "^1.0.0-beta.11",
+    "openai": "^4.28.0"
   }
 }
