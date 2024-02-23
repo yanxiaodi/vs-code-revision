@@ -1,4 +1,4 @@
-# ReVision README
+# ReVision
 
 **ReVision** is a VSCode extension that allows you to quickly and easily revise your written work. It uses [OpenAI](https://openai.com/) to generate new text based on your existing text. It can use different writing styles to improve your writing, and can also be used to translate your text into a different language.
 
@@ -7,7 +7,7 @@
 ReVision can use OpenAI or Azure OpenAI:
 
 * [OpenAI API](https://openai.com/blog/openai-api/). You can sign up for a free account [here](https://beta.openai.com/). Once you have an account, you can generate an API key [here](https://beta.openai.com/account/api-keys). You can then paste your API key into the extension settings.
-* [Azure OpenAI API](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/). Azure OpenAI is a paid service provided by Microsoft. If you have got the API key, you can paste it into the extension settings. Besides the API key, you also need to specify the endpoint URL and the deployment name. Currently, ReVision only supports the `text-davinci-003` model. If you want to use other models, please open an issue.
+* [Azure OpenAI API](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/). Azure OpenAI is a paid service provided by Microsoft. If you have got the API key, you can paste it into the extension settings. Besides the API key, you also need to specify the endpoint URL and the deployment name. Currently, ReVision supports `text-davinci-003`. The other models may not be able to get expected outputs. If you want to use other models, please open an issue.
 
 Revise the text using ReVision:
 
