@@ -307,7 +307,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "deploy": "vsce publish --yarn"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
