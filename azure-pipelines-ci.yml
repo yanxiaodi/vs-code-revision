@@ -33,7 +33,7 @@ steps:
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
 
 - bash: |
-    echo ">>> Compile vscode-test"
+    echo ">>> Compile"
     yarn && yarn compile
   displayName: Compile
   env:
