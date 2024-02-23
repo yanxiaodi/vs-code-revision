@@ -127,8 +127,12 @@ You can change the writing style, source language, target language and prompts i
 
 This extension contributes the following settings:
 
-* `revision.api`: Choose the API you want to use. Currently, only OpenAI is supported. We will support Azure OpenAI in the future.
+* `revision.api`: Choose the API you want to use. It supports OpenAI and Azure OpenAI.
 * `revision.openAIApiKey`: Your OpenAI API key. You can get one [here](https://beta.openai.com/account/api-keys).
+* `revision.openAIModelName`: The OpenAI model name you want to use. The default model name is `gpt-3.5-turbo-instruct`.
+* `revision.azureOpenAIApiKey`: Your Azure OpenAI API key.
+* `revision.azureOpenAIEndpoint`: The endpoint URL of your Azure OpenAI service.
+* `revision.azureOpenAIDeploymentName`: The deployment name of your Azure OpenAI service.
 * `revision.writingStyle`: The writing style you want to use.
 * `revision.otherWritingStyle`: If you choose `other` as the writing style, you can specify your own style here.
 * `revision.sourceLanguage`: The source language of your text.
@@ -145,6 +149,10 @@ This extension contributes the following settings:
 The keybinding might not work properly on some Linux machines or conflict with other extensions. Please open issues to describe your environment. Thanks.
 
 ## Release Notes
+
+### 0.0.6
+
+Add a configuration to specify the OpenAI model name. The default model name is `gpt-3.5-turbo-instruct`. `text-davinci-003` has been deprecated since 2024-01-04.
 
 ### 0.0.5
 

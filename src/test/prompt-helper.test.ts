@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { PromptHelper } from '../../prompt-helper';
+import { PromptHelper } from '../prompt-helper';
 
 describe('PromptHelper', () => {
     const sinon = require('sinon');
