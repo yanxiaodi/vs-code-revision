@@ -24,6 +24,10 @@ export const getOpenAIApiKeyConfiguration = () => {
   return getConfiguration<string>("openAIApiKey");
 };
 
+export const getOpenAIModelNameConfiguration = () => {
+  return getConfiguration<string>("openAIModelName") ?? "gpt-3.5-turbo-instruct";
+};
+
 export const getWritingStyleConfiguration = () => {
   return getConfiguration<string>("writingStyle") ?? "professional";
 };

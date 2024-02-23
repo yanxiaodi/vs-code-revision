@@ -71,6 +71,11 @@
           "default": "",
           "description": "The API key of OpenAI."
         },
+        "revision.openAIModelName": {
+          "type": "string",
+          "default": "",
+          "description": "The model name of OpenAI."
+        },
         "revision.azureOpenAIApiKey": {
           "type": "string",
           "default": "",
